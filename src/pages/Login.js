@@ -37,6 +37,7 @@ class Login extends Component {
   }
 
   render() {
+    const { history } = this.props;
     const { email, name } = this.state;
     const { history } = this.props;
     return (
@@ -72,6 +73,7 @@ class Login extends Component {
           >
             Jogar
           </button>
+          <SettingsBtn history={ history } />
         </form>
         <SettingsBtn history={ history } />
       </main>
