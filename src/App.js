@@ -12,3 +12,5 @@ export default function App() {
     </div>
   );
 }
+
+// Montando a estrutura do projeto
