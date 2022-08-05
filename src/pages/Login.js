@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import SettingsBtn from '../components/SettingsBtn';
+import SettingsBtn from '../components/SettingsBtn';
 import requestToken from '../services/requestToken';
 
 class Login extends Component {
@@ -37,6 +37,7 @@ class Login extends Component {
   }
 
   render() {
+    const { history } = this.props;
     const { email, name } = this.state;
     return (
       <main className="login-body">
@@ -71,6 +72,7 @@ class Login extends Component {
           >
             Jogar
           </button>
+          <SettingsBtn history={ history } />
         </form>
       </main>
     );
