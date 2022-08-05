@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import SettingsBtn from '../components/SettingsBtn';
 
 class Login extends Component {
   constructor() {
@@ -28,6 +30,7 @@ class Login extends Component {
   }
 
   render() {
+    const { history } = this.props;
     const { email, name } = this.state;
     return (
       <main className="login-body">
@@ -65,9 +68,14 @@ class Login extends Component {
             Jogar
           </button>
         </form>
+        <SettingsBtn history={ history } />
       </main>
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default connect(null, null)(Login);
