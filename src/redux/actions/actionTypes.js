@@ -1,2 +1,3 @@
 export const REQUEST_TOKEN = 'REQUEST_TOKEN';
 export const FAIL_REQUEST = 'FAIL_REQUEST';
+export const SAVE_LOGIN_INFO = 'SAVE_LOGIN_INFO';
