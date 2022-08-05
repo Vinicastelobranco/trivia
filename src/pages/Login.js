@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SettingsBtn from '../components/SettingsBtn';
 import requestToken from '../services/requestToken';
+import { saveLoginInfoAction } from '../redux/actions';
 
 class Login extends Component {
   constructor() {
@@ -38,7 +39,8 @@ class Login extends Component {
 
   render() {
     const { email, name } = this.state;
-    const { history } = this.props;
+    const infoObj = { name, email };
+    const { history, saveInfo } = this.props;
     return (
       <main className="login-body">
         <form className="login-form">
@@ -68,7 +70,10 @@ class Login extends Component {
             type="button"
             data-testid="btn-play"
             disabled={ !this.validateLogin() }
-            onClick={ this.fetchToken }
+            onClick={ () => {
+              saveInfo(infoObj);
+              this.fetchToken();
+            } }
           >
             Jogar
           </button>
@@ -79,8 +84,13 @@ class Login extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  saveInfo: (obj) => dispatch(saveLoginInfoAction(obj)),
+});
+
 Login.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  saveInfo: PropTypes.func.isRequired,
 };
 
-export default connect(null, null)(Login);
+export default connect(null, mapDispatchToProps)(Login);
