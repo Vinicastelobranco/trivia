@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import requestToken from '../services/requestToken';
 
 class Login extends Component {
   constructor() {
@@ -25,6 +27,12 @@ class Login extends Component {
   validateLogin = () => {
     const { email, name } = this.state;
     return this.validateEmail(email) && name.length > 0;
+  }
+
+  fetchToken = async () => {
+    await requestToken();
+    const { history } = this.props;
+    history.push('/jogo');
   }
 
   render() {
@@ -58,9 +66,7 @@ class Login extends Component {
             type="button"
             data-testid="btn-play"
             disabled={ !this.validateLogin() }
-            onClick={ () => {
-
-            } }
+            onClick={ this.fetchToken }
           >
             Jogar
           </button>
@@ -69,5 +75,9 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default connect(null, null)(Login);
