@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+// import SettingsBtn from '../components/SettingsBtn';
 import requestToken from '../services/requestToken';
 
 class Login extends Component {
