@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import SettingsBtn from '../components/SettingsBtn';
+// import SettingsBtn from '../components/SettingsBtn';
+import requestToken from '../services/requestToken';
 
 class Login extends Component {
   constructor() {
@@ -29,8 +30,13 @@ class Login extends Component {
     return this.validateEmail(email) && name.length > 0;
   }
 
-  render() {
+  fetchToken = async () => {
+    await requestToken();
     const { history } = this.props;
+    history.push('/jogo');
+  }
+
+  render() {
     const { email, name } = this.state;
     return (
       <main className="login-body">
@@ -61,14 +67,11 @@ class Login extends Component {
             type="button"
             data-testid="btn-play"
             disabled={ !this.validateLogin() }
-            onClick={ () => {
-
-            } }
+            onClick={ this.fetchToken }
           >
             Jogar
           </button>
         </form>
-        <SettingsBtn history={ history } />
       </main>
     );
   }
