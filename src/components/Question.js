@@ -9,6 +9,36 @@ class Question extends React.Component {
     }
   }
 
+  otherAnswers = (elements) => {
+    const {
+      question:
+      { correct_answer: correct },
+    } = this.props;
+    for (let index = 0; index < elements.length; index += 1) {
+      if (elements[index].classList.length !== 0) {
+        if (elements[index].innerText === correct) {
+          elements[index].classList.add('correct');
+        } else {
+          elements[index].classList.add('incorrect');
+        }
+      }
+    }
+  }
+
+  verifyAnswer = ({ target }) => {
+    const {
+      question:
+      { correct_answer: correct },
+    } = this.props;
+    if (target.innerText === correct) {
+      target.classList.add('correct');
+    } else {
+      target.classList.add('incorrect');
+    }
+    const buttons = document.querySelectorAll('.button');
+    this.otherAnswers(buttons);
+  }
+
   render() {
     const {
       question:
@@ -31,6 +61,8 @@ class Question extends React.Component {
                 type="button"
                 data-testid={ answer === correct ? 'correct-answer'
                   : `wrong-answer-${incorrectIndex}` }
+                className="button"
+                onClick={ this.verifyAnswer }
               >
                 {answer}
               </button>);
