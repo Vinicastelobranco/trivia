@@ -47,6 +47,7 @@ class Question extends React.Component {
     const score = TEN + (timer * difficultyObj[difficulty]);
     addScore(score);
   }
+
   otherAnswers = (elements) => {
     const {
       question:
