@@ -43,8 +43,15 @@ class Game extends React.Component {
         <Header />
         { question === undefined ? <p>Loading...</p> : (
           <>
-            <Timer changeTimerDone={ this.changeTimerDone } />
-            <Question question={ question } isTimerDone={ isTimerDone } />
+            <Timer
+              changeTimerDone={ this.changeTimerDone }
+              isTimerDone={ isTimerDone }
+            />
+            <Question
+              question={ question }
+              isTimerDone={ isTimerDone }
+              changeTimerDone={ this.changeTimerDone }
+            />
           </>
         )}
       </>

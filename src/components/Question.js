@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addScoreAction } from '../redux/actions';
 
 class Question extends React.Component {
   constructor() {
@@ -29,6 +31,23 @@ class Question extends React.Component {
     }
   }
 
+  calculateScore = () => {
+    const {
+      addScore,
+      timer, question:
+      { difficulty },
+    } = this.props;
+
+    const difficultyObj = {
+      easy: 1,
+      medium: 2,
+      hard: 3,
+    };
+    const TEN = 10;
+    const score = TEN + (timer * difficultyObj[difficulty]);
+    addScore(score);
+  }
+
   otherAnswers = (elements) => {
     const {
       question:
@@ -49,14 +68,18 @@ class Question extends React.Component {
     const {
       question:
       { correct_answer: correct },
+
+      changeTimerDone,
     } = this.props;
     if (target.innerText === correct) {
       target.classList.add('correct');
+      this.calculateScore();
     } else {
       target.classList.add('incorrect');
     }
     const buttons = document.querySelectorAll('.button');
     this.otherAnswers(buttons);
+    changeTimerDone(true);
   }
 
   render() {
@@ -97,6 +120,17 @@ class Question extends React.Component {
 Question.propTypes = {
   question: PropTypes.objectOf(PropTypes.any).isRequired,
   isTimerDone: PropTypes.bool.isRequired,
+  changeTimerDone: PropTypes.func.isRequired,
+  timer: PropTypes.number.isRequired,
+  addScore: PropTypes.func.isRequired,
 };
 
-export default Question;
+const mapDispatchToProps = (dispatch) => ({
+  addScore: (score) => dispatch(addScoreAction(score)),
+});
+
+const mapStateToProps = (store) => ({
+  timer: store.game.timer,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

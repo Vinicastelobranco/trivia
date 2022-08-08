@@ -1,4 +1,4 @@
-import { SAVE_LOGIN_INFO } from '../actions/actionTypes';
+import { SAVE_LOGIN_INFO, ADD_SCORE } from '../actions/actionTypes';
 
 const initialState = {
   name: '',
@@ -14,6 +14,11 @@ const playerReducer = (state = initialState, action) => {
       ...state,
       name: action.loginInfoObj.name,
       gravatarEmail: action.loginInfoObj.email,
+    };
+  case ADD_SCORE:
+    return {
+      ...state,
+      score: state.score + action.score,
     };
   default:
     return {

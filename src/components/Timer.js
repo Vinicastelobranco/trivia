@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { saveTimerAction } from '../redux/actions';
 
 const THOUSAND = 1000;
 
@@ -17,9 +19,15 @@ class Timer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const { isTimerDone } = this.props;
+    const { count } = this.state;
     if (prevState.count === 1) {
       prevProps.changeTimerDone(true);
       clearInterval(this.intervalID);
+    }
+    if (isTimerDone) {
+      clearInterval(this.intervalID);
+      prevProps.saveTimer(count);
     }
   }
 
@@ -43,6 +51,12 @@ class Timer extends Component {
 
 Timer.propTypes = {
   changeTimerDone: PropTypes.func.isRequired,
+  isTimerDone: PropTypes.bool.isRequired,
+  saveTimer: PropTypes.func.isRequired,
 };
 
-export default Timer;
+const mapDispatchToProps = (dispatch) => ({
+  saveTimer: (timer) => dispatch(saveTimerAction(timer)),
+});
+
+export default connect(null, mapDispatchToProps)(Timer);
