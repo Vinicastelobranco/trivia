@@ -47,7 +47,6 @@ class Question extends React.Component {
     const score = TEN + (timer * difficultyObj[difficulty]);
     addScore(score);
   }
-
   otherAnswers = (elements) => {
     const {
       question:
@@ -68,6 +67,7 @@ class Question extends React.Component {
     const {
       question:
       { correct_answer: correct },
+
       changeTimerDone,
     } = this.props;
     if (target.innerText === correct) {
