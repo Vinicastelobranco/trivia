@@ -35,6 +35,13 @@ class Game extends React.Component {
     });
   }
 
+  nextQuestion = () => {
+    this.setState((prevState) => ({
+      indexQuestion: prevState.indexQuestion + 1,
+      isTimerDone: false,
+    }));
+  }
+
   render() {
     const { questions, indexQuestion, isTimerDone } = this.state;
     const question = questions[indexQuestion];
@@ -52,6 +59,14 @@ class Game extends React.Component {
               isTimerDone={ isTimerDone }
               changeTimerDone={ this.changeTimerDone }
             />
+            { isTimerDone && (
+              <button
+                type="button"
+                data-testid="btn-next"
+                onClick={ this.nextQuestion }
+              >
+                Next
+              </button>) }
           </>
         )}
       </>
