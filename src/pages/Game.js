@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import requestQuestions from '../services/requestQuestions';
 import Question from '../components/Question';
+import Timer from '../components/Timer';
 
 class Game extends React.Component {
   constructor() {
     super();
+
     this.state = {
       questions: [],
       indexQuestion: 0,
+      isTimerDone: false,
     };
   }
 
@@ -26,13 +29,24 @@ class Game extends React.Component {
     }
   }
 
+  changeTimerDone = (bool) => {
+    this.setState({
+      isTimerDone: bool,
+    });
+  }
+
   render() {
-    const { questions, indexQuestion } = this.state;
+    const { questions, indexQuestion, isTimerDone } = this.state;
     const question = questions[indexQuestion];
     return (
       <>
         <Header />
-        { question === undefined ? <p>Loading...</p> : <Question question={ question } />}
+        { question === undefined ? <p>Loading...</p> : (
+          <>
+            <Timer changeTimerDone={ this.changeTimerDone } />
+            <Question question={ question } isTimerDone={ isTimerDone } />
+          </>
+        )}
       </>
     );
   }
