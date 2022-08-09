@@ -15,7 +15,18 @@ class Feedback extends React.Component {
             ? (<span data-testid="feedback-text">Could be better...</span>)
             : (<span data-testid="feedback-text">Well Done!</span>) }
           <span data-testid="feedback-total-question">{ assertions }</span>
+          {' '}
           <span data-testid="feedback-total-score">{ score }</span>
+          <button
+            type="button"
+            data-testid="btn-ranking"
+            onClick={ () => {
+              const { history } = this.props;
+              history.push('/ranking');
+            } }
+          >
+            Ranking
+          </button>
         </div>
       </>
     );
@@ -25,6 +36,7 @@ class Feedback extends React.Component {
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const mapStateToProps = (state) => ({
