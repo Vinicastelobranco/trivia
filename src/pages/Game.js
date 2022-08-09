@@ -9,6 +9,8 @@ class Game extends React.Component {
   constructor() {
     super();
 
+    this.FOUR = 4;
+
     this.state = {
       questions: [],
       indexQuestion: 0,
@@ -36,14 +38,21 @@ class Game extends React.Component {
   }
 
   nextQuestion = () => {
+    const { questions: getQuestions } = this.state;
     this.setState((prevState) => ({
+      questions: [],
       indexQuestion: prevState.indexQuestion + 1,
-      isTimerDone: false,
-    }));
+    }), () => {
+      this.setState({
+        questions: getQuestions,
+        isTimerDone: false,
+      });
+    });
   }
 
   render() {
     const { questions, indexQuestion, isTimerDone } = this.state;
+    const { history } = this.props;
     const question = questions[indexQuestion];
     return (
       <>
@@ -63,7 +72,13 @@ class Game extends React.Component {
               <button
                 type="button"
                 data-testid="btn-next"
-                onClick={ this.nextQuestion }
+                onClick={ () => {
+                  if (indexQuestion < this.FOUR) {
+                    this.nextQuestion();
+                  } else {
+                    history.push('/feedback');
+                  }
+                } }
               >
                 Next
               </button>) }
