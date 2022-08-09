@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 class GoBackBtn extends Component {
   constructor() {
     super();
-    this.redirectToSettings = this.redirectToSettings.bind(this);
+    this.redirectToSettings = this.goBack.bind(this);
   }
 
-  redirectToSettings(history) {
+  goBack(history) {
     history.goBack();
   }
 
@@ -17,7 +17,7 @@ class GoBackBtn extends Component {
     return (
       <button
         type="button"
-        onClick={ () => this.redirectToSettings(history) }
+        onClick={ () => this.goBack(history) }
       >
         Voltar
       </button>
