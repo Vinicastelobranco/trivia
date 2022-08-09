@@ -3,21 +3,52 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
 import App from '../App';
+import requestTokenObj from '../services/requestToken';
+import requestQuestionsObj from '../services/requestQuestions';
 
 describe('Testes da página de login', () => {
   let myHistory = '';
 
-  beforeEach(() => {
+  jest.spyOn(requestTokenObj, 'requestToken').mockResolvedValue({
+    response_code: 0,
+    response_message: "Token Generated Successfully!",
+    token: "1c85443d3cfe1fee0d1a7bcf66de700080c50e47d221961216e73df1964b8a2e",
+  });
+  
+  jest.spyOn(requestQuestionsObj, 'requestQuestions').mockResolvedValue({
+      response_code: 0,
+      results:[
+        {
+          category: 'Entertainment: Video Games',
+          type:'multiple',
+          difficulty:'easy',
+          question: 'What is the first weapon you acquire in Half-Life?',
+          correct_answer:'A crowbar',
+          incorrect_answers: [
+              'A pistol',
+              'The H.E.V suit',
+              'Your fists'
+          ],
+        },
+        {
+          category: 'Entertainment: Video Games',
+          type:'multiple',
+          difficulty:'easy',
+          question: 'What is the first weapon you acquire in Half-Life?',
+          correct_answer:'A crowbar',
+          incorrect_answers: [
+              'A pistol',
+              'The H.E.V suit',
+              'Your fists'
+          ],
+        }
+    ],
+    },
+  );
+
+  beforeEach(() => {   
     const { history } = renderWithRouterAndRedux(<App />);
     myHistory = history;
-
-    global.fetch = jest.fn().mockResolvedValue({
-      json: jest.fn().mockResolvedValue({
-        response_code:0,
-        response_message:'Token Generated Successfully!',
-        token:'f00cb469ce38726ee00a7c6836761b0a4fb808181a125dcde6d50a9f3c9127b6',
-      })},
-    );
   });
 
   test('Verifica se a url e os componentes estão corretos', () => {
@@ -42,11 +73,13 @@ describe('Testes da página de login', () => {
 
     userEvent.click(playBtn);
 
-    await waitFor(() => expect(fetch).toHaveBeenCalled());
+    await waitFor(() => expect(requestTokenObj.requestToken).toHaveBeenCalled());
+
+    await waitFor(() => expect(requestQuestionsObj.requestQuestions).toHaveBeenCalled());
 
     expect(myHistory.location.pathname).toBe('/jogo');
 
-    myHistory.location.pathname = '/';
+    myHistory.push('/');
     
     const settingsBtn = screen.getByTestId('btn-settings');
     userEvent.click(settingsBtn);
