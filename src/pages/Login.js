@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SettingsBtn from '../components/SettingsBtn';
-import requestToken from '../services/requestToken';
+import requestTokenObj from '../services/requestToken';
 import { saveLoginInfoAction } from '../redux/actions';
 
 class Login extends Component {
@@ -32,7 +32,7 @@ class Login extends Component {
   }
 
   fetchToken = async () => {
-    await requestToken();
+    await requestTokenObj.requestToken();
     const { history } = this.props;
     history.push('/jogo');
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-import requestQuestions from '../services/requestQuestions';
+import requestQuestionsObj from '../services/requestQuestions';
 import Question from '../components/Question';
 import Timer from '../components/Timer';
 
@@ -20,7 +20,7 @@ class Game extends React.Component {
 
   async componentDidMount() {
     const token = localStorage.getItem('token');
-    const questions = await requestQuestions(token);
+    const questions = await requestQuestionsObj.requestQuestions(token);
     const THREE = 3;
     if (questions.response_code === THREE) {
       const { history } = this.props;
