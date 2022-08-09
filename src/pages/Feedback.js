@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import PlayAgainBtn from '../components/PlayAgainBtn';
 
 class Feedback extends React.Component {
   render() {
-    const { assertions, score } = this.props;
+    const { assertions, score, history } = this.props;
     const THREE = 3;
     return (
       <>
@@ -28,6 +29,7 @@ class Feedback extends React.Component {
             Ranking
           </button>
         </div>
+        <PlayAgainBtn history={ history } testid="btn-play-again" />
       </>
     );
   }
