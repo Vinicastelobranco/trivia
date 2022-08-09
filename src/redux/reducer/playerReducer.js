@@ -1,4 +1,4 @@
-import { SAVE_LOGIN_INFO, ADD_SCORE } from '../actions/actionTypes';
+import { SAVE_LOGIN_INFO, ADD_SCORE, RESET_PLAYER } from '../actions/actionTypes';
 
 const initialState = {
   name: '',
@@ -20,6 +20,14 @@ const playerReducer = (state = initialState, action) => {
       ...state,
       score: state.score + action.score,
       assertions: state.assertions + 1,
+    };
+  case RESET_PLAYER:
+    return {
+      ...state,
+      name: '',
+      assertions: 0,
+      score: 0,
+      gravatarEmail: '',
     };
   default:
     return {
