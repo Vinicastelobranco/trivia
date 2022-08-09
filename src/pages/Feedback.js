@@ -22,7 +22,6 @@ class Feedback extends React.Component {
             type="button"
             data-testid="btn-ranking"
             onClick={ () => {
-              const { history } = this.props;
               history.push('/ranking');
             } }
           >
