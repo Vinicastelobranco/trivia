@@ -16,7 +16,17 @@ class Feedback extends React.Component {
             ? (<span data-testid="feedback-text">Could be better...</span>)
             : (<span data-testid="feedback-text">Well Done!</span>) }
           <span data-testid="feedback-total-question">{ assertions }</span>
+          {' '}
           <span data-testid="feedback-total-score">{ score }</span>
+          <button
+            type="button"
+            data-testid="btn-ranking"
+            onClick={ () => {
+              history.push('/ranking');
+            } }
+          >
+            Ranking
+          </button>
         </div>
         <PlayAgainBtn history={ history } testid="btn-play-again" />
       </>

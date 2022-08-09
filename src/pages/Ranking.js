@@ -13,7 +13,11 @@ class Ranking extends React.Component {
 
   render() {
     const { history } = this.props;
-    return (<PlayAgainBtn history={ history } testid="btn-go-home" />);
+    return (
+      <div>
+        <h1 data-testid="ranking-title">Ranking</h1>
+        <PlayAgainBtn history={ history } testid="btn-go-home" />
+      </div>);
   }
 }
 
