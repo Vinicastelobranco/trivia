@@ -10,7 +10,7 @@ describe('Testes da página de login', () => {
   global.localStorage = new LocalStorageMock;
   let myHistory = '';
 
-  beforeEach(() => {   
+  beforeEach(() => {
     const { history } = renderWithRouterAndRedux(<App />);
     myHistory = history;
   });
