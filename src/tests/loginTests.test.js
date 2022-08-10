@@ -3,48 +3,12 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
 import App from '../App';
-import requestTokenObj from '../services/requestToken';
-import requestQuestionsObj from '../services/requestQuestions';
+import LocalStorageMock from './helpers/LocalStorageMock';
+import { mockedReqToken, mockedReqQuestions } from './helpers/mockedFunctions';
 
 describe('Testes da página de login', () => {
+  global.localStorage = new LocalStorageMock;
   let myHistory = '';
-
-  jest.spyOn(requestTokenObj, 'requestToken').mockResolvedValue({
-    response_code: 0,
-    response_message: "Token Generated Successfully!",
-    token: "1c85443d3cfe1fee0d1a7bcf66de700080c50e47d221961216e73df1964b8a2e",
-  });
-  
-  jest.spyOn(requestQuestionsObj, 'requestQuestions').mockResolvedValue({
-      response_code: 0,
-      results:[
-        {
-          category: 'Entertainment: Video Games',
-          type:'multiple',
-          difficulty:'easy',
-          question: 'What is the first weapon you acquire in Half-Life?',
-          correct_answer:'A crowbar',
-          incorrect_answers: [
-              'A pistol',
-              'The H.E.V suit',
-              'Your fists'
-          ],
-        },
-        {
-          category: 'Entertainment: Video Games',
-          type:'multiple',
-          difficulty:'easy',
-          question: 'What is the first weapon you acquire in Half-Life?',
-          correct_answer:'A crowbar',
-          incorrect_answers: [
-              'A pistol',
-              'The H.E.V suit',
-              'Your fists'
-          ],
-        }
-    ],
-    },
-  );
 
   beforeEach(() => {   
     const { history } = renderWithRouterAndRedux(<App />);
@@ -73,9 +37,9 @@ describe('Testes da página de login', () => {
 
     userEvent.click(playBtn);
 
-    await waitFor(() => expect(requestTokenObj.requestToken).toHaveBeenCalled());
+    await waitFor(() => expect(mockedReqToken).toHaveBeenCalled());
 
-    await waitFor(() => expect(requestQuestionsObj.requestQuestions).toHaveBeenCalled());
+    await waitFor(() => expect(mockedReqQuestions).toHaveBeenCalled());
 
     expect(myHistory.location.pathname).toBe('/jogo');
 
