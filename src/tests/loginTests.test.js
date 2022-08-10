@@ -25,7 +25,7 @@ describe('Testes da página de login', () => {
     expect(screen.getByTestId('input-gravatar-email')).toBeInTheDocument();
     expect(screen.getByTestId('input-player-name')).toBeInTheDocument();
     expect(screen.getByTestId('btn-play')).toBeInTheDocument();
-    expect(screen.getByTestId('btn-settings')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /configurações/i })).toBeInTheDocument();
   });
 
   test('Verifica se a página login tem o comportamento esperado', async () => {
@@ -48,7 +48,7 @@ describe('Testes da página de login', () => {
 
     myHistory.location.pathname = '/';
     
-    const settingsBtn = screen.getByTestId('btn-settings');
+    const settingsBtn = screen.getByRole('button', { name: /configurações/i });
     userEvent.click(settingsBtn);
 
     expect(screen.getByTestId('settings-title')).toBeInTheDocument();

@@ -54,6 +54,7 @@ class Game extends React.Component {
     const { questions, indexQuestion, isTimerDone } = this.state;
     const { history } = this.props;
     const question = questions[indexQuestion];
+    console.log(questions);
     return (
       <>
         <Header />
