@@ -16,7 +16,6 @@ class Ranking extends React.Component {
     this.setState({
       playersInfo: arrayOfPlayers,
     });
-    console.log(arrayOfPlayers);
   }
 
   getRanking = (key) => JSON.parse(localStorage.getItem(key))
@@ -30,11 +29,11 @@ class Ranking extends React.Component {
         {
           playersInfo.sort((a, b) => Number(b.score) - Number(a.score))
             .map((player, index) => (
-              <>
+              <div key={ `${player}${index}` }>
                 <img src={ `https://www.gravatar.com/avatar/${md5(player.gravatarEmail).toString()}` } alt="Imagem Gravatar" />
                 <p data-testid={ `player-name-${index}` }>{player.name}</p>
                 <p data-testid={ `player-score-${index}` }>{player.score}</p>
-              </>
+              </div>
 
             ))
         }
