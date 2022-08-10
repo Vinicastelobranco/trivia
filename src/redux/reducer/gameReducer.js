@@ -1,7 +1,10 @@
-import { SAVE_TIMER } from '../actions/actionTypes';
+import { SAVE_TIMER, CHANGE_SETTINGS } from '../actions/actionTypes';
 
 const initialState = {
   timer: 30,
+  category: '',
+  difficulty: '',
+  questionType: '',
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -10,6 +13,13 @@ const gameReducer = (state = initialState, action) => {
     return {
       ...state,
       timer: action.timer,
+    };
+  case CHANGE_SETTINGS:
+    return {
+      ...state,
+      category: action.category,
+      difficulty: action.difficulty,
+      questionType: action.questionType,
     };
   default:
     return {

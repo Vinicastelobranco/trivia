@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Header from '../components/Header';
 import requestQuestionsObj from '../services/requestQuestions';
 import Question from '../components/Question';
@@ -19,8 +20,9 @@ class Game extends React.Component {
   }
 
   async componentDidMount() {
+    const { settingsInfo } = this.props;
     const token = localStorage.getItem('token');
-    const questions = await requestQuestionsObj.requestQuestions(token);
+    const questions = await requestQuestionsObj.requestQuestions(token, settingsInfo);
     const THREE = 3;
     if (questions.response_code === THREE) {
       const { history } = this.props;
@@ -92,6 +94,15 @@ class Game extends React.Component {
 
 Game.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  settingsInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default Game;
+const mapStateToProps = (state) => ({
+  settingsInfo: {
+    category: state.game.category,
+    difficulty: state.game.difficulty,
+    type: state.game.questionType,
+  },
+});
+
+export default connect(mapStateToProps)(Game);
