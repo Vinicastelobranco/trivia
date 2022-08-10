@@ -29,7 +29,7 @@ class Ranking extends React.Component {
         {
           playersInfo.sort((a, b) => Number(b.score) - Number(a.score))
             .map((player, index) => (
-              <div key={ `${player.name} ${index}` }>
+              <div key={ `${player}${index}` }>
                 <img src={ `https://www.gravatar.com/avatar/${md5(player.gravatarEmail).toString()}` } alt="Imagem Gravatar" />
                 <p data-testid={ `player-name-${index}` }>{player.name}</p>
                 <p data-testid={ `player-score-${index}` }>{player.score}</p>
