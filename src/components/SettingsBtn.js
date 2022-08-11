@@ -20,7 +20,7 @@ class SettingsBtn extends Component {
         data-testid="btn-settings"
         onClick={ () => this.redirectToSettings(history) }
       >
-        Configurações
+        Settings
       </button>
     );
   }

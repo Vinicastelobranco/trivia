@@ -40,19 +40,15 @@ class Feedback extends React.Component {
           </p>
 
           <p>
-            Você acertou
+            Total of assertions:
             {' '}
             <span data-testid="feedback-total-question">{ assertions }</span>
-            {' '}
-            questões!
           </p>
 
           <p>
-            Um total de
+            Total score:
             {' '}
             <span data-testid="feedback-total-score">{ score }</span>
-            {' '}
-            pontos
           </p>
 
           <button

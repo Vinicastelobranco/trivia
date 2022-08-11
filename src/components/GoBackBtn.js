@@ -19,7 +19,7 @@ class GoBackBtn extends Component {
         type="button"
         onClick={ () => this.goBack(history) }
       >
-        Voltar
+        Login
       </button>
     );
   }
