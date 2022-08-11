@@ -67,3 +67,8 @@ export const mockedQuestions = {
       },
   ],
 }
+
+export const mockedQuestionError = {
+    response_code: 3,
+    results: [],
+}
