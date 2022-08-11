@@ -1,7 +1,6 @@
 import requestTokenObj from '../../services/requestToken';
 import requestQuestionsObj from '../../services/requestQuestions';
 import { mockedToken, mockedQuestions } from './mockedData';
-import { mockedQuestionError } from './mockedData'
 
 export const mockedReqToken = jest.spyOn(requestTokenObj, 'requestToken').mockImplementation(async () => {
   const data = await Promise.resolve({
@@ -20,4 +19,3 @@ export const mockedReqQuestions = jest.spyOn(requestQuestionsObj, 'requestQuesti
   const data = falseFetch(url);
   return data;
 });
-
