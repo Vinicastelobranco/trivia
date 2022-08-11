@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import requestCategoriesObj from '../services/requestCategories';
 import { changeSettingsAction } from '../redux/actions';
 import GoBackBtn from '../components/GoBackBtn';
+import HeaderAipim from '../components/HeaderAipim';
 
 class Settings extends Component {
   constructor() {
@@ -44,71 +45,74 @@ class Settings extends Component {
     const difficultyArray = ['easy', 'medium', 'hard'];
     const questionTypeArray = ['multiple', 'boolean'];
     return (
-      <main>
-        <h1 data-testid="settings-title">Settings</h1>
-        {
-          categories.length === 0 ? <p>Loading...</p> : (
-            <div>
-              <label htmlFor="category">
-                Category:
-                <select
-                  name="selectedCategory"
-                  value={ selectedCategory }
-                  id="category"
-                  onChange={ this.handleSelectChange }
-                >
-                  <option value="">Any</option>
-                  {
-                    categories
-                      .map((category) => (
-                        <option
-                          key={ category.id }
-                          value={ category.id }
-                        >
-                          {category.name}
-                        </option>))
-                  }
-                </select>
-              </label>
+      <>
+        <HeaderAipim />
+        <main>
+          <h1 data-testid="settings-title">Settings</h1>
+          {
+            categories.length === 0 ? <p>Loading...</p> : (
+              <div>
+                <label htmlFor="category">
+                  Category:
+                  <select
+                    name="selectedCategory"
+                    value={ selectedCategory }
+                    id="category"
+                    onChange={ this.handleSelectChange }
+                  >
+                    <option value="">Any</option>
+                    {
+                      categories
+                        .map((category) => (
+                          <option
+                            key={ category.id }
+                            value={ category.id }
+                          >
+                            {category.name}
+                          </option>))
+                    }
+                  </select>
+                </label>
 
-              <label htmlFor="difficulty">
-                Difficulty:
-                <select
-                  name="selectedDifficulty"
-                  value={ selectedDifficulty }
-                  onChange={ this.handleSelectChange }
-                  id="difficulty"
-                >
-                  <option value="">Any</option>
-                  {
-                    difficultyArray
-                      .map((difficulty) => (
-                        <option key={ difficulty }>{difficulty}</option>))
-                  }
-                </select>
-              </label>
+                <label htmlFor="difficulty">
+                  Difficulty:
+                  <select
+                    name="selectedDifficulty"
+                    value={ selectedDifficulty }
+                    onChange={ this.handleSelectChange }
+                    id="difficulty"
+                  >
+                    <option value="">Any</option>
+                    {
+                      difficultyArray
+                        .map((difficulty) => (
+                          <option key={ difficulty }>{difficulty}</option>))
+                    }
+                  </select>
+                </label>
 
-              <label htmlFor="questionType">
-                Type:
-                <select
-                  name="selectedQuestionType"
-                  value={ selectedQuestionType }
-                  onChange={ this.handleSelectChange }
-                  id="questionType"
-                >
-                  <option value="">Any</option>
-                  {
-                    questionTypeArray
-                      .map((question) => (
-                        <option key={ question }>{question}</option>))
-                  }
-                </select>
-              </label>
-            </div>
-          )
-        }
-        <GoBackBtn history={ history } />
-      </main>
+                <label htmlFor="questionType">
+                  Type:
+                  <select
+                    name="selectedQuestionType"
+                    value={ selectedQuestionType }
+                    onChange={ this.handleSelectChange }
+                    id="questionType"
+                  >
+                    <option value="">Any</option>
+                    {
+                      questionTypeArray
+                        .map((question) => (
+                          <option key={ question }>{question}</option>))
+                    }
+                  </select>
+                </label>
+              </div>
+            )
+          }
+          <GoBackBtn history={ history } />
+        </main>
+      </>
     );
   }
 }
