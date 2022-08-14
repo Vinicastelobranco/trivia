@@ -52,11 +52,41 @@
 
 .answersContainer {
   display: flex;
+  flex-direction: column;
   margin-bottom: 8px;
 }
 
-.answersContainer .answerContainer button {
-  background-color: chartreuse;
+.answersContainer button {
+  background-color: #361e70;
+  border: 1px solid transparent;
+  color: white;
+  padding: 4px;
+}
+
+.answersContainer button:hover {
+  background-color: #37e9bb;
+}
+
+.answersContainer button:disabled {
+  background-color: #371e7031;
+  color: white;
+  padding: 4px;
+}
+
+.answersContainer .correct {
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.answersContainer .correct:disabled {
+  background-color: rgba(6, 240, 14, 0.719);
+}
+
+.answersContainer .incorrect {
+  border: 3px solid red;
+}
+
+.answersContainer .incorrect:disabled {
+  background-color: rgba(255, 0, 0, 0.719);
 }
 
 .nextButton {
@@ -67,3 +97,7 @@
   width: 6em;
 }
 
+.button {
+  margin-bottom: 5px;
+  /* width: 100%; */
+}
