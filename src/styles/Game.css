@@ -1,8 +1,10 @@
 .questionContainer {
   align-items: center;
-  border: 1px solid black;
+  color: white;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin-top: 3em;
   padding: 16px;
 }
 
@@ -26,17 +28,33 @@
   order: 5;
 }
 
-.questionText {
+.questionCategoryContainer {
+  font-size: 1.7rem;
+  text-align: center;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
+.questionText {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.timerContainer {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
 .timer {
-  color: black;
+  color: white;
+  font-size: 1.3rem;
 }
 
 .flashingRed {
   animation: flash linear 1s infinite;
   color: rgb(255, 37, 37);
+  font-size: 1.3rem;
 }
 
 /* achei aqui --> https://codepen.io/iPawan/pen/oNejjE */
@@ -57,19 +75,19 @@
 }
 
 .answersContainer button {
-  background-color: #361e70;
+  background-color: #6949fd;
   border: 1px solid transparent;
   color: white;
   padding: 4px;
 }
 
 .answersContainer button:hover {
-  background-color: #37e9bb;
+  background-color: #37e9bac5;
 }
 
 .answersContainer button:disabled {
-  background-color: #371e7031;
-  color: white;
+  background-color: #6a49fd1c;
+  color: rgba(255, 255, 255, 0.425);
   padding: 4px;
 }
 
@@ -90,14 +108,21 @@
 }
 
 .nextButton {
+  background-color: #6949fd;
   border: 1px solid transparent;
-  color: #32167c;
+  color: white;
   margin-top: 8px;
   padding: 4px;
   width: 6em;
 }
 
+.nextButton:hover {
+  background-color: #37e9bac5;
+}
+
 .button {
+  font-size: 1.3rem;
   margin-bottom: 5px;
-  /* width: 100%; */
+  overflow-wrap: break-word;
+  width: 7em;
 }

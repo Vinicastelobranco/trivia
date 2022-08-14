@@ -16,6 +16,7 @@ class PlayAgainBtn extends Component {
     const { history, testid } = this.props;
     return (
       <button
+        className="feedback-btn"
         data-testid={ testid }
         type="button"
         onClick={ () => this.redirectToLogin(history) }
