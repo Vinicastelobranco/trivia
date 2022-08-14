@@ -86,8 +86,10 @@ class Question extends React.Component {
     const stringReplace = statement
       .replace(/&quot;/g, '"')
       .replace(/&#039;/g, '\'')
-      .replace(/&amp;/g, '&');
-    console.log(stringReplace);
+      .replace(/&amp;/g, '&')
+      .replace(/&eacute;/g, 'é')
+      .replace(/&ouml;/i, 'ö')
+      .replace(/&auml;/i, 'ä');
     return stringReplace;
   }
 
