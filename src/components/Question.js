@@ -121,18 +121,18 @@ class Question extends React.Component {
             let incorrectIndex = MINUSONE;
             if (answer !== correct) incorrectIndex += 1;
             return (
-              <div key={ answer } className="answerContainer">
-                <button
-                  type="button"
-                  disabled={ isTimerDone }
-                  data-testid={ answer === correct ? 'correct-answer'
-                    : `wrong-answer-${incorrectIndex}` }
-                  className="button"
-                  onClick={ this.verifyAnswer }
-                >
-                  {answer}
-                </button>
-              </div>);
+              <button
+                key={ answer }
+                type="button"
+                disabled={ isTimerDone }
+                data-testid={ answer === correct ? 'correct-answer'
+                  : `wrong-answer-${incorrectIndex}` }
+                className="button"
+                onClick={ this.verifyAnswer }
+              >
+                {answer}
+              </button>
+            );
           }) }
         </div>
       </>

@@ -1,3 +1,7 @@
+body {
+  background-color: #361e70;
+}
+
 .feedback-body {
   background-color: #361e70;
   display: flex;
