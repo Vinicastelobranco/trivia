@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import PlayAgainBtn from '../components/PlayAgainBtn';
 import { resetPlayerAction } from '../redux/actions';
+import '../styles/Feedback.css';
 
 class Feedback extends React.Component {
   componentDidMount() {
@@ -32,36 +33,49 @@ class Feedback extends React.Component {
     return (
       <>
         <Header />
-        <div>
-          <p>
-            {assertions < THREE
-              ? (<span data-testid="feedback-text">Could be better...</span>)
-              : (<span data-testid="feedback-text">Well Done!</span>) }
-          </p>
+        <main className="feedback-body">
+          <div className="feedback-div">
+            <div className="feedback-statement">
+              {assertions < THREE
+                ? (
+                  <p>
+                    <span data-testid="feedback-text">Could be better...</span>
+                    <span role="img" aria-label="emoji">&#128532;</span>
+                  </p>
+                )
+                : (
+                  <p>
+                    <span data-testid="feedback-text">Well Done!</span>
+                    <span role="img" aria-label="emoji">&#128512;</span>
+                  </p>
+                ) }
+            </div>
 
-          <p>
-            Total of assertions:
-            {' '}
-            <span data-testid="feedback-total-question">{ assertions }</span>
-          </p>
+            <p>
+              Total of assertions:
+              {' '}
+              <span data-testid="feedback-total-question">{ assertions }</span>
+            </p>
 
-          <p>
-            Total score:
-            {' '}
-            <span data-testid="feedback-total-score">{ score }</span>
-          </p>
+            <p>
+              Total score:
+              {' '}
+              <span data-testid="feedback-total-score">{ score }</span>
+            </p>
 
-          <button
-            type="button"
-            data-testid="btn-ranking"
-            onClick={ () => {
-              history.push('/ranking');
-            } }
-          >
-            Ranking
-          </button>
-        </div>
-        <PlayAgainBtn history={ history } testid="btn-play-again" />
+            <button
+              className="feedback-btn"
+              type="button"
+              data-testid="btn-ranking"
+              onClick={ () => {
+                history.push('/ranking');
+              } }
+            >
+              Ranking
+            </button>
+            <PlayAgainBtn history={ history } testid="btn-play-again" />
+          </div>
+        </main>
       </>
     );
   }
