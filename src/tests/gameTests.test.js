@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { findAllByText, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
 import App from '../App'
@@ -37,30 +37,44 @@ describe('Testa a página do Game', () => {
   test('se as perguntas e respostas do jogo são renderizadas', async () => {
     renderWithRouterAndRedux(<App />, initialState, '/jogo');
     await waitFor(() => expect(mockedReqQuestions).toHaveBeenCalled());
+
     const category = screen.getByTestId('question-category');
     const text = screen.getByTestId('question-text');
     const wrong = screen.getByRole('button', { name: /starfish/i });
     const correct = screen.getByTestId('correct-answer');
 
     expect(category).toHaveTextContent('Entertainment: Television')
-    expect(text).toHaveTextContent(/In the episode of SpongeBob SquarePants, &quot;Survival of the Idiots&quot;/i);
+    expect(text).toHaveTextContent(/In the episode of SpongeBob SquarePants/i);
     expect(correct).toHaveTextContent('Pinhead');
     expect(wrong).toBeInTheDocument();
   });
+
   test('redireciona para a página de Feedback após terminar o jogo', async () => {
     renderWithRouterAndRedux(<App />, initialState, '/jogo');
     await waitFor(() => expect(mockedReqQuestions).toHaveBeenCalled());
 
-    for (let index = 0; index < 5; index++) {
-      const correct = screen.getByTestId('correct-answer');
-      userEvent.click(correct);
+    const correctFirst = screen.getByTestId('correct-answer');
+    userEvent.click(correctFirst);
+    expect(correctFirst).toHaveClass('correct')
+    const nextButtonFirst = screen.getByRole('button', { name: /next/i });
+    userEvent.click(nextButtonFirst);
+
+    for (let index = 0; index < 3; index += 1){
+      const incorrect = screen.getAllByTestId('wrong-answer-0')[0];
+      userEvent.click(incorrect);
+      expect(incorrect).toHaveClass('incorrect');
       const nextButton = screen.getByRole('button', { name: /next/i });
       userEvent.click(nextButton);
     }
 
+    await new Promise((r) => setTimeout(r, 30000));
+    
+    const nextButton = await screen.findByRole('button', { name: /next/i });
+    userEvent.click(nextButton);
+
     const ranking = await screen.findByRole('button', { name: 'Ranking' });
     expect(ranking).toBeInTheDocument();
-  });
+  }, 35000);
 
   test('se token for inválido', async () => {
     jest.spyOn(requestQuestionsObj, 'requestQuestions').mockResolvedValue({

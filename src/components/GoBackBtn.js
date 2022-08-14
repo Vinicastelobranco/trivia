@@ -9,7 +9,7 @@ class GoBackBtn extends Component {
   }
 
   goBack(history) {
-    history.goBack();
+    history.push('/');
   }
 
   render() {

@@ -1,6 +1,7 @@
 import requestTokenObj from '../../services/requestToken';
 import requestQuestionsObj from '../../services/requestQuestions';
 import { mockedToken, mockedQuestions } from './mockedData';
+import requestCategoriesObj from '../../services/requestCategories';
 
 export const mockedReqToken = jest.spyOn(requestTokenObj, 'requestToken').mockImplementation(async () => {
   const data = await Promise.resolve({
@@ -18,4 +19,16 @@ export const mockedReqQuestions = jest.spyOn(requestQuestionsObj, 'requestQuesti
   };
   const data = falseFetch(url);
   return data;
+});
+
+export const mockedReqCategories = jest.spyOn(requestCategoriesObj, 'requestCategories').mockImplementation(async () => {
+  const categories = await Promise.resolve({
+    trivia_categories: [ 
+      {id: 9, name: 'General Knowledge'},
+      {id: 10, name: 'Entertainment: Books'},
+      {id: 11, name: 'Entertainment: Film'},
+      {id: 12, name: 'Entertainment: Music'},
+    ]
+  });
+  return categories.trivia_categories;
 });
