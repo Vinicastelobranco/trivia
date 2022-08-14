@@ -5,6 +5,7 @@ import requestCategoriesObj from '../services/requestCategories';
 import { changeSettingsAction } from '../redux/actions';
 import GoBackBtn from '../components/GoBackBtn';
 import HeaderAipim from '../components/HeaderAipim';
+import '../styles/Settings.css';
 
 class Settings extends Component {
   constructor() {
@@ -47,35 +48,39 @@ class Settings extends Component {
     return (
       <>
         <HeaderAipim />
-        <main>
+        <main className="settingsContainer">
           <h1 data-testid="settings-title">Settings</h1>
           {
             categories.length === 0 ? <p>Loading...</p> : (
-              <div>
-                <label htmlFor="category">
-                  Category:
-                  <select
-                    name="selectedCategory"
-                    value={ selectedCategory }
-                    id="category"
-                    onChange={ this.handleSelectChange }
-                  >
-                    <option value="">Any</option>
-                    {
-                      categories
-                        .map((category) => (
-                          <option
-                            key={ category.id }
-                            value={ category.id }
-                          >
-                            {category.name}
-                          </option>))
-                    }
-                  </select>
-                </label>
+              <div className="optionsContainer">
+                <div className="categoryContainer">
+                  <label htmlFor="category">
+                    Category
+                    <br />
+                    <select
+                      name="selectedCategory"
+                      value={ selectedCategory }
+                      id="category"
+                      onChange={ this.handleSelectChange }
+                    >
+                      <option value="">Any</option>
+                      {
+                        categories
+                          .map((category) => (
+                            <option
+                              key={ category.id }
+                              value={ category.id }
+                            >
+                              {category.name}
+                            </option>))
+                      }
+                    </select>
+                  </label>
+                </div>
 
                 <label htmlFor="difficulty">
-                  Difficulty:
+                  Difficulty
+                  <br />
                   <select
                     name="selectedDifficulty"
                     value={ selectedDifficulty }
@@ -92,7 +97,8 @@ class Settings extends Component {
                 </label>
 
                 <label htmlFor="questionType">
-                  Type:
+                  Type
+                  <br />
                   <select
                     name="selectedQuestionType"
                     value={ selectedQuestionType }
@@ -110,7 +116,9 @@ class Settings extends Component {
               </div>
             )
           }
-          <GoBackBtn history={ history } />
+          <div className="buttonContainer">
+            <GoBackBtn history={ history } />
+          </div>
         </main>
       </>
     );
