@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
 import App from '../App';
 import LocalStorageMock from './helpers/LocalStorageMock';
-import { mockedReqToken, mockedReqQuestions } from './helpers/mockedFunctions';
 
 const players = [
   {

@@ -2,7 +2,6 @@ const defaultValue = 5;
 
 const requestQuestionsObj = {
   requestQuestions: async (token, { category, difficulty, type }) => {
-    console.log(category, ' ', difficulty, ' ', type);
     let url = '';
     if (category === '' && difficulty === '' && type === '') {
       url = `https://opentdb.com/api.php?amount=${defaultValue}&token=${token}`;
