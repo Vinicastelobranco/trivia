@@ -99,29 +99,43 @@ class Question extends React.Component {
     } = this.props;
     const { options } = this.state;
     return (
-      <main>
-        <p data-testid="question-category">{category}</p>
-        <p data-testid="question-text">{this.formatAnswer(question)}</p>
-        <div data-testid="answer-options">
+      <>
+        <div className="questionCategoryContainer">
+          <p data-testid="question-category">
+            Category:
+            {' '}
+            {category}
+          </p>
+        </div>
+        <div className="questionTextContainer">
+          <p
+            data-testid="question-text"
+            className="questionText"
+          >
+            {this.formatAnswer(question)}
+          </p>
+        </div>
+        <div data-testid="answer-options" className="answersContainer">
           { options.map((answer) => {
             const MINUSONE = -1;
             let incorrectIndex = MINUSONE;
             if (answer !== correct) incorrectIndex += 1;
             return (
-              <button
-                key={ answer }
-                type="button"
-                disabled={ isTimerDone }
-                data-testid={ answer === correct ? 'correct-answer'
-                  : `wrong-answer-${incorrectIndex}` }
-                className="button"
-                onClick={ this.verifyAnswer }
-              >
-                {answer}
-              </button>);
+              <div key={ answer } className="answerContainer">
+                <button
+                  type="button"
+                  disabled={ isTimerDone }
+                  data-testid={ answer === correct ? 'correct-answer'
+                    : `wrong-answer-${incorrectIndex}` }
+                  className="button"
+                  onClick={ this.verifyAnswer }
+                >
+                  {answer}
+                </button>
+              </div>);
           }) }
         </div>
-      </main>
+      </>
     );
   }
 }

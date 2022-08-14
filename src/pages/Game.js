@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import requestQuestionsObj from '../services/requestQuestions';
 import Question from '../components/Question';
 import Timer from '../components/Timer';
+import '../styles/Game.css';
 
 class Game extends React.Component {
   constructor() {
@@ -59,33 +60,36 @@ class Game extends React.Component {
     return (
       <>
         <Header />
-        { question === undefined ? <p>Loading...</p> : (
-          <>
-            <Timer
-              changeTimerDone={ this.changeTimerDone }
-              isTimerDone={ isTimerDone }
-            />
-            <Question
-              question={ question }
-              isTimerDone={ isTimerDone }
-              changeTimerDone={ this.changeTimerDone }
-            />
-            { isTimerDone && (
-              <button
-                type="button"
-                data-testid="btn-next"
-                onClick={ () => {
-                  if (indexQuestion < this.FOUR) {
-                    this.nextQuestion();
-                  } else {
-                    history.push('/feedback');
-                  }
-                } }
-              >
-                Next
-              </button>) }
-          </>
-        )}
+        <main className="questionContainer">
+          { question === undefined ? <p>Loading...</p> : (
+            <>
+              <Timer
+                changeTimerDone={ this.changeTimerDone }
+                isTimerDone={ isTimerDone }
+              />
+              <Question
+                question={ question }
+                isTimerDone={ isTimerDone }
+                changeTimerDone={ this.changeTimerDone }
+              />
+              { isTimerDone && (
+                <button
+                  type="button"
+                  data-testid="btn-next"
+                  className="nextButton"
+                  onClick={ () => {
+                    if (indexQuestion < this.FOUR) {
+                      this.nextQuestion();
+                    } else {
+                      history.push('/feedback');
+                    }
+                  } }
+                >
+                  Next
+                </button>) }
+            </>
+          )}
+        </main>
       </>
     );
   }

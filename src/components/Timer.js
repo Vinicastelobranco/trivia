@@ -45,7 +45,11 @@ class Timer extends Component {
 
   render() {
     const { count } = this.state;
-    return <div>{ count }</div>;
+    const TEN = 10;
+    return (
+      <div className="timerContainer">
+        <p className={ count <= TEN ? 'flashingRed' : 'timer' }>{ count }</p>
+      </div>);
   }
 }
 

@@ -1,0 +1,52 @@
+.signInContainer {
+  padding: 8px;
+}
+
+.login-body {
+  align-items: center;
+  background-color: #32167c;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.signInContainer .signInH2 {
+  color: white;
+  font-size: 1.9em;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer {
+  padding-bottom: 4px;
+}
+
+.inputContainer input {
+  border: 1px solid transparent;
+}
+
+.inputContainer input:focus {
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.buttonContainer button {
+  border: 1px solid transparent;
+  color: #32167c;
+  margin-top: 8px;
+  padding: 4px;
+  width: 6em;
+}
+
+.buttonContainer button:hover {
+  background-color: #37e9bb;
+  border: 1px solid transparent;
+  outline: none;
+  width: 6em;
+}
