@@ -1,0 +1,14 @@
+.aipimShowHeader {
+  align-items: center;
+  background-color: #6949fd;
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+}
+
+.aipimShowH1 {
+  color: white;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-align: center;
+}

@@ -1,0 +1,129 @@
+.questionContainer {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3em;
+  padding: 16px;
+}
+
+.questionContainer :nth-child( 1 ) {
+  order: 2;
+}
+
+.questionContainer :nth-child( 2 ) {
+  order: 1;
+}
+
+.questionContainer :nth-child( 3 ) {
+  order: 3;
+}
+
+.questionContainer :nth-child( 4 ) {
+  order: 4;
+}
+
+.questionContainer :nth-child( 5 ) {
+  order: 5;
+}
+
+.questionCategoryContainer {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.questionText {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.timerContainer {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.timer {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.flashingRed {
+  animation: flash linear 1s infinite;
+  color: rgb(255, 37, 37);
+  font-size: 1.3rem;
+}
+
+/* achei aqui --> https://codepen.io/iPawan/pen/oNejjE */
+
+@keyframes flash {
+
+  0% { opacity: 1; }
+
+  50% { opacity: 0.2; }
+
+  100% { opacity: 1; }
+}
+
+.answersContainer {
+  display: grid;
+  grid-column-gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 8px;
+}
+
+.answersContainer button {
+  background-color: #6949fd;
+  border: 1px solid transparent;
+  color: white;
+  padding: 4px;
+}
+
+.answersContainer button:hover {
+  background-color: #37e9bac5;
+}
+
+.answersContainer button:disabled {
+  background-color: #6a49fd1c;
+  color: rgba(255, 255, 255, 0.425);
+  padding: 4px;
+}
+
+.answersContainer .correct {
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.answersContainer .correct:disabled {
+  background-color: rgba(6, 240, 14, 0.719);
+}
+
+.answersContainer .incorrect {
+  border: 3px solid red;
+}
+
+.answersContainer .incorrect:disabled {
+  background-color: rgba(255, 0, 0, 0.719);
+}
+
+.nextButton {
+  background-color: #6949fd;
+  border: 1px solid transparent;
+  color: white;
+  margin-top: 8px;
+  padding: 4px;
+  width: 6em;
+}
+
+.nextButton:hover {
+  background-color: #37e9bac5;
+}
+
+.button {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  overflow-wrap: break-word;
+  width: 7em;
+}

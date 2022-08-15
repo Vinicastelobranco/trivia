@@ -1,0 +1,33 @@
+.playerInfoHeader {
+  background-color: #6949fd;
+  color: white;
+  display: flex;
+  height: 10vh;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.aipimShow {
+  align-items: center;
+  display: flex;
+}
+
+.playerInfoContainer {
+  display: flex;
+}
+
+.playerScoreAndName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 12px;
+}
+
+.playerPictureContainer {
+  align-items: center;
+  display: flex;
+}
+
+.playerPictureContainer img {
+  height: 50%;
+}

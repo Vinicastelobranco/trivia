@@ -83,7 +83,10 @@ class Question extends React.Component {
     const stringReplace = statement
       .replace(/&quot;/g, '"')
       .replace(/&#039;/g, '\'')
-      .replace(/&amp;/g, '&');
+      .replace(/&amp;/g, '&')
+      .replace(/&eacute;/g, 'é')
+      .replace(/&ouml;/i, 'ö')
+      .replace(/&auml;/i, 'ä');
     return stringReplace;
   }
 
@@ -95,10 +98,23 @@ class Question extends React.Component {
     } = this.props;
     const { options } = this.state;
     return (
-      <main>
-        <p data-testid="question-category">{category}</p>
-        <p data-testid="question-text">{this.formatAnswer(question)}</p>
-        <div data-testid="answer-options">
+      <>
+        <div className="questionCategoryContainer">
+          <p data-testid="question-category">
+            Category:
+            {' '}
+            {category}
+          </p>
+        </div>
+        <div className="questionTextContainer">
+          <p
+            data-testid="question-text"
+            className="questionText"
+          >
+            {this.formatAnswer(question)}
+          </p>
+        </div>
+        <div data-testid="answer-options" className="answersContainer">
           { options.map((answer) => {
             const MINUSONE = -1;
             let incorrectIndex = MINUSONE;
@@ -117,10 +133,11 @@ class Question extends React.Component {
                 } }
               >
                 {answer}
-              </button>);
+              </button>
+            );
           }) }
         </div>
-      </main>
+      </>
     );
   }
 }

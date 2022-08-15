@@ -1,0 +1,88 @@
+.ranking-body {
+  align-items: center;
+  background-color: #361e70;
+  display: flex;
+  height: 92.1vh;
+  justify-content: center;
+}
+
+.ranking-body .ranking-container {
+  background-color: #1f1147;
+  border-radius: 16px;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  height: 600px;
+  padding: 32px;
+  width: 500px;
+}
+
+.ranking-container h1 {
+  color: rgb(19, 218, 79);
+  margin: auto;
+}
+
+.ranking-container .ranking-people {
+  background-color: #361e70;
+  border-radius: 16px;
+  height: 400px;
+  margin: auto;
+  overflow-y: scroll;
+  padding: 12px;
+  width: 100%;
+}
+
+.ranking-container .ranking-people::-webkit-scrollbar {
+  background-color: #361e70;
+  border-radius: 100%;
+  width: 16px;
+}
+
+.ranking-container .ranking-people::-webkit-scrollbar-thumb {
+  background: #6949fd;
+  border-radius: 16px;
+}
+
+.ranking-container .ranking-people::-webkit-resizer {
+  height: 20px;
+}
+
+.ranking-container button {
+  background-color: #6949fd;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  margin: auto;
+  padding: 8px;
+  width: 120px;
+}
+
+.ranking-container button:hover {
+  background-color: #32167c;
+}
+
+.ranking-container .ranking-people .people-info {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.ranking-container .ranking-people .people-info img {
+  border-radius: 100%;
+}
+
+.ranking-container .ranking-people .people-info div {
+  width: 300px;
+}
+
+.ranking-container .ranking-people .people-info p {
+  color: rgb(19, 218, 79);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.ranking-container .ranking-people .people-info span {
+  color: white;
+}

@@ -1,0 +1,76 @@
+body {
+  background-color: #361e70;
+}
+
+.feedback-body {
+  background-color: #361e70;
+  display: flex;
+  height: 86.3vh;
+  justify-content: center;
+}
+
+.feedback-body .feedback-div {
+  background-color: #1f1147;
+  border-radius: 16px;
+  display: grid;
+  grid-gap: 20px;
+  margin-top: 80px;
+  max-height: 350px;
+  min-width: 350px;
+  padding: 40px;
+  text-align: center;
+}
+
+.feedback-div :nth-child( 4 ) {
+  background-color: #6949fd;
+  border: none;
+  color: white;
+}
+
+.feedback-div :nth-child( 5 ) {
+  background-color: #1f1147;
+  border: 1px #6949fd solid;
+  color: #6949fd;
+}
+
+.feedback-statement {
+  color: white;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: auto;
+}
+
+.feedback-div :nth-child( 2 ), .feedback-div :nth-child( 3 ) {
+  color: white;
+  font-size: 1.4rem;
+  margin: auto;
+}
+
+.feedback-statement :nth-child( 1 ) :nth-child( 2 ) {
+  font-size: 30px;
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.feedback-statement :nth-child( 2 ) :nth-child( 2 ) {
+  font-size: 30px;
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.feedback-div .feedback-btn {
+  border-radius: 8px;
+  font-size: 1rem;
+  margin: auto;
+  padding: 8px;
+  width: 120px;
+}
+
+.feedback-div :nth-child( 4 ):hover {
+  background-color: #32167c;
+}
+
+.feedback-div :nth-child( 5 ):hover {
+  background-color: #32167c;
+}
+

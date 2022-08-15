@@ -1,0 +1,29 @@
+.settingsContainer {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5em;
+}
+
+.settingsContainer h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+.optionsContainer select {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.optionsContainer select:focus {
+  outline: none;
+}
+
