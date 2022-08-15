@@ -54,12 +54,10 @@ class Question extends React.Component {
       { correct_answer: correct },
     } = this.props;
     for (let index = 0; index < elements.length; index += 1) {
-      if (elements[index].classList.length !== 0) {
-        if (elements[index].innerText === correct) {
-          elements[index].classList.add('correct');
-        } else {
-          elements[index].classList.add('incorrect');
-        }
+      if (elements[index].value === correct) {
+        elements[index].classList.add('correct');
+      } else {
+        elements[index].classList.add('incorrect');
       }
     }
   }
@@ -68,10 +66,9 @@ class Question extends React.Component {
     const {
       question:
       { correct_answer: correct },
-
       changeTimerDone,
     } = this.props;
-    if (target.innerText === correct) {
+    if (target.value === correct) {
       target.classList.add('correct');
       this.calculateScore();
     } else {
@@ -80,6 +77,14 @@ class Question extends React.Component {
     const buttons = document.querySelectorAll('.button');
     this.otherAnswers(buttons);
     changeTimerDone(true);
+  }
+
+  formatAnswer = (statement) => {
+    const stringReplace = statement
+      .replace(/&quot;/g, '"')
+      .replace(/&#039;/g, '\'')
+      .replace(/&amp;/g, '&');
+    return stringReplace;
   }
 
   render() {
@@ -92,7 +97,7 @@ class Question extends React.Component {
     return (
       <main>
         <p data-testid="question-category">{category}</p>
-        <p data-testid="question-text">{question}</p>
+        <p data-testid="question-text">{this.formatAnswer(question)}</p>
         <div data-testid="answer-options">
           { options.map((answer) => {
             const MINUSONE = -1;
@@ -102,11 +107,14 @@ class Question extends React.Component {
               <button
                 key={ answer }
                 type="button"
+                value={ answer }
                 disabled={ isTimerDone }
                 data-testid={ answer === correct ? 'correct-answer'
                   : `wrong-answer-${incorrectIndex}` }
                 className="button"
-                onClick={ this.verifyAnswer }
+                onClick={ (event) => {
+                  this.verifyAnswer(event);
+                } }
               >
                 {answer}
               </button>);

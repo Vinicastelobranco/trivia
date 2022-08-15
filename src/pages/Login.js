@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SettingsBtn from '../components/SettingsBtn';
 import requestTokenObj from '../services/requestToken';
 import { saveLoginInfoAction } from '../redux/actions';
+import HeaderAipim from '../components/HeaderAipim';
 
 class Login extends Component {
   constructor() {
@@ -42,44 +43,47 @@ class Login extends Component {
     const infoObj = { name, email };
     const { history, saveInfo } = this.props;
     return (
-      <main className="login-body">
-        <form className="login-form">
-          <label htmlFor="email">
-            Email:
+      <>
+        <HeaderAipim />
+        <main className="login-body">
+          <form className="login-form">
+
             <input
               type="text"
               id="email"
               name="email"
+              placeholder="Email"
               value={ email }
               onChange={ this.handleChange }
               data-testid="input-gravatar-email"
             />
-          </label>
-          <label htmlFor="name">
-            Nome:
+
             <input
               type="text"
+              placeholder="Name"
               id="name"
               name="name"
               value={ name }
               onChange={ this.handleChange }
               data-testid="input-player-name"
             />
-          </label>
-          <button
-            type="button"
-            data-testid="btn-play"
-            disabled={ !this.validateLogin() }
-            onClick={ () => {
-              saveInfo(infoObj);
-              this.fetchToken();
-            } }
-          >
-            Jogar
-          </button>
-        </form>
-        <SettingsBtn history={ history } />
-      </main>
+
+            <button
+              type="button"
+              data-testid="btn-play"
+              disabled={ !this.validateLogin() }
+              onClick={ () => {
+                saveInfo(infoObj);
+                this.fetchToken();
+              } }
+            >
+              Play
+            </button>
+          </form>
+          <SettingsBtn history={ history } />
+        </main>
+      </>
+
     );
   }
 }

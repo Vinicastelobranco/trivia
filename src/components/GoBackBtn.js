@@ -9,7 +9,7 @@ class GoBackBtn extends Component {
   }
 
   goBack(history) {
-    history.goBack();
+    history.push('/');
   }
 
   render() {
@@ -19,7 +19,7 @@ class GoBackBtn extends Component {
         type="button"
         onClick={ () => this.goBack(history) }
       >
-        Voltar
+        Login
       </button>
     );
   }

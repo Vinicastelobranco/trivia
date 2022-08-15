@@ -12,12 +12,12 @@ class Header extends React.Component {
     return (
       <header className="header">
         <p>
-          Jogador:
+          Player:
           {' '}
           <span data-testid="header-player-name">{userName}</span>
         </p>
         <p>
-          Pontuação:
+          Score:
           {' '}
           <span data-testid="header-score">{score}</span>
         </p>
