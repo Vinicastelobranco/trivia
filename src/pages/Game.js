@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import requestQuestionsObj from '../services/requestQuestions';
 import Question from '../components/Question';
 import Timer from '../components/Timer';
+// import '../style/header.scss';
 
 class Game extends React.Component {
   constructor() {

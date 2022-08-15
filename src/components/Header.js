@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
+// import style from '../style/header.module.scss';
+// colocar o nome da classe entre chaves: {style.header}
 
 class Header extends React.Component {
   render() {
     const { userName, userEmail, score } = this.props;
     const hash = md5(userEmail).toString();
     return (
-      <header>
+      <header className="header">
         <p>
           Jogador:
           {' '}
