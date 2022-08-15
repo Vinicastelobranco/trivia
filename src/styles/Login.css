@@ -13,7 +13,7 @@
 }
 
 
-.signInContainer .signInH2 {
+.signInH2 {
   color: white;
   font-size: 2rem;
 }
@@ -47,6 +47,13 @@
 
 .buttonContainer button:hover {
   background-color: #37e9bb;
+  border: 1px solid transparent;
+  outline: none;
+  width: 6em;
+}
+
+.buttonContainer button:disabled:hover {
+  background-color: #37e9ba75;
   border: 1px solid transparent;
   outline: none;
   width: 6em;
