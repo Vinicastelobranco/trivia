@@ -11,7 +11,7 @@ class Header extends React.Component {
     return (
       <header className="playerInfoHeader">
         <div className="aipimShow">
-          <h1>Aipim Show</h1>
+          <h1>Show do Aipinzão</h1>
         </div>
         <div className="playerInfoContainer">
           <div className="playerScoreAndName">
