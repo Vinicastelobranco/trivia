@@ -75,24 +75,23 @@ class Login extends Component {
                 data-testid="input-player-name"
               />
             </div>
-
+            <div className="buttonContainer1 buttonContainer">
+              <button
+                type="button"
+                data-testid="btn-play"
+                disabled={ !this.validateLogin() }
+                onClick={ () => {
+                  saveInfo(infoObj);
+                  this.fetchToken();
+                } }
+              >
+                Play
+              </button>
+            </div>
+            <div className="buttonContainer2 buttonContainer">
+              <SettingsBtn history={ history } />
+            </div>
           </form>
-          <div className="buttonContainer">
-            <button
-              type="button"
-              data-testid="btn-play"
-              disabled={ !this.validateLogin() }
-              onClick={ () => {
-                saveInfo(infoObj);
-                this.fetchToken();
-              } }
-            >
-              Play
-            </button>
-          </div>
-          <div className="buttonContainer">
-            <SettingsBtn history={ history } />
-          </div>
         </main>
       </>
 

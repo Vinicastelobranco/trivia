@@ -1,4 +1,5 @@
 .signInContainer {
+  margin: auto;
   padding: 8px;
 }
 
@@ -19,17 +20,21 @@
 }
 
 .login-form {
-  display: flex;
-  flex-direction: column;
+  background-color: #1f1147;
+  border-radius: 16px;
+  display: grid;
+  min-height: 350px;
+  padding: 40px;
 }
 
 .inputContainer {
+  margin: auto;
   padding-bottom: 4px;
 }
 
 .inputContainer input {
   border: 1px solid transparent;
-  height: 1.5em;
+  padding: 4px;
 }
 
 .inputContainer input:focus {
@@ -37,24 +42,39 @@
   outline: none;
 }
 
+.buttonContainer {
+  display: grid;
+}
+
 .buttonContainer button {
-  border: 1px solid transparent;
-  color: #32167c;
-  margin-top: 8px;
-  padding: 4px;
-  width: 6em;
+  font-size: 1rem;
+  margin: auto;
+  padding: 8px;
+  width: 120px;
+}
+
+.buttonContainer2 button {
+  background-color: #1f1147;
+  border: 1px #6949fd solid;
+  border-radius: 8px;
+  color: #6949fd;
+}
+
+.buttonContainer1 button {
+  background-color: #6949fd;
+  border: none;
+  border-radius: 8px;
+  color: white;
 }
 
 .buttonContainer button:hover {
-  background-color: #37e9bb;
-  border: 1px solid transparent;
+  background-color: #32167c;
+  border: none;
   outline: none;
-  width: 6em;
 }
 
-.buttonContainer button:disabled:hover {
+.buttonContainer button:disabled {
   background-color: #37e9ba75;
-  border: 1px solid transparent;
+  color: #1f1147;
   outline: none;
-  width: 6em;
 }

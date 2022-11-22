@@ -6,6 +6,18 @@
   margin-top: 5em;
 }
 
+.settingsBody {
+  background-color: #1f1147;
+  border-radius: 16px;
+  display: grid;
+  grid-gap: 20px;
+  margin-top: 80px;
+  max-height: 350px;
+  min-width: 350px;
+  padding: 40px;
+  text-align: center;
+}
+
 .settingsContainer h1 {
   font-size: 2rem;
   margin-bottom: 8px;
