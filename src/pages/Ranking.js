@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
 import PlayAgainBtn from '../components/PlayAgainBtn';
-import HeaderAipim from '../components/HeaderAipim';
+import HeaderTrivia from '../components/HeaderTrivia';
 import '../styles/Ranking.css';
 
 class Ranking extends React.Component {
@@ -27,7 +27,7 @@ class Ranking extends React.Component {
     const { playersInfo } = this.state;
     return (
       <>
-        <HeaderAipim />
+        <HeaderTrivia />
         <main className="ranking-body">
           <div className="ranking-container">
             <h1 data-testid="ranking-title">Ranking</h1>

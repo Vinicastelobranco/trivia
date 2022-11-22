@@ -1,11 +1,11 @@
 import React from 'react';
-import '../styles/HeaderAipim.css';
+import '../styles/HeaderTrivia.css';
 
 class HeaderAipim extends React.Component {
   render() {
     return (
-      <header className="aipimShowHeader">
-        <h1 className="aipimShowH1">Show do Aipinzão </h1>
+      <header className="triviaHeader">
+        <h1 className="triviaH1">Trivia</h1>
       </header>
     );
   }

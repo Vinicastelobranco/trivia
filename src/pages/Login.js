@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import SettingsBtn from '../components/SettingsBtn';
 import requestTokenObj from '../services/requestToken';
 import { saveLoginInfoAction } from '../redux/actions';
-import HeaderAipim from '../components/HeaderAipim';
+import HeaderTrivia from '../components/HeaderTrivia';
 import '../styles/Login.css';
 
 class Login extends Component {
@@ -45,7 +45,7 @@ class Login extends Component {
     const { history, saveInfo } = this.props;
     return (
       <>
-        <HeaderAipim />
+        <HeaderTrivia />
         <main className="login-body">
           <form className="login-form">
             <div className="signInContainer">

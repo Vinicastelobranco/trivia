@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.1.2",
     "crypto-js": "^4.0.0",
+    "gh-pages": "^4.0.0",
     "prop-types": "^15.8.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -30,7 +31,9 @@
     "eject": "react-scripts eject",
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "lint:styles": "npx stylelint '**/*.css'",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx"
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -81,5 +84,6 @@
       "src/utils/*",
       "src/tests/helpers/*"
     ]
-  }
+  },
+  "homepage": "https://vinicastelobranco.github.io/trivia"
 }

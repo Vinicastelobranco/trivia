@@ -10,8 +10,8 @@ class Header extends React.Component {
     const hash = md5(userEmail).toString();
     return (
       <header className="playerInfoHeader">
-        <div className="aipimShow">
-          <h1>Show do Aipinzão</h1>
+        <div className="trivia">
+          <h1>Trivia</h1>
         </div>
         <div className="playerInfoContainer">
           <div className="playerScoreAndName">

@@ -1,4 +1,4 @@
-.aipimShowHeader {
+.triviaHeader {
   align-items: center;
   background-color: #6949fd;
   display: flex;
@@ -7,7 +7,7 @@
   margin-bottom: 100px;
 }
 
-.aipimShowH1 {
+.triviaH1 {
   color: white;
   padding-bottom: 12px;
   padding-top: 12px;

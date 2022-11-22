@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import requestCategoriesObj from '../services/requestCategories';
 import { changeSettingsAction } from '../redux/actions';
 import GoBackBtn from '../components/GoBackBtn';
-import HeaderAipim from '../components/HeaderAipim';
+import HeaderTrivia from '../components/HeaderTrivia';
 import '../styles/Settings.css';
 
 class Settings extends Component {
@@ -47,7 +47,7 @@ class Settings extends Component {
     const questionTypeArray = ['multiple', 'boolean'];
     return (
       <>
-        <HeaderAipim />
+        <HeaderTrivia />
         <main className="settingsContainer">
           <div className="settingsBody">
             <h1 data-testid="settings-title">Settings</h1>
